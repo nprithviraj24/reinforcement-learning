@@ -2,7 +2,7 @@
 
 Thanks to [Jariullah Safi's](https://github.com/safijari) incredible stream in Twitch.
 
-#### With Random moves.
+#### 01. With Random moves.
 > Blue box: Agent
 
 > Green box: Target.
@@ -25,7 +25,7 @@ while not m.has_won():
 
 
 
-### Q-Learning using Bellam Equation
+### 02. Q-Learning using Bellam Equation
 
 Using Bellman equation to update value function.
 
@@ -33,6 +33,33 @@ Using Bellman equation to update value function.
 
 #### Notice it is much more consistent with its moves.
 
-I've used ```time.sleep(0.5)``` for better view of our agent's moves.
+I've used ```time.sleep(0.5)``` for better vigew of our agent's moves.
 
 ![](./artifacts/q-learnt.gif)
+
+
+### 03. Exploration vs Exploitation
+
+<strong>Using annealing probability function.</strong>
+
+> The algorithm explores unless legit moves have some positive Q values. Then it starts exploring.
+
+```python
+# Exploration
+if random.random() > anneal_probability(i, max_episodes, switch_episodes, 0.5) or i < switch_episodes:
+    # list me all the moves possible for the agent
+    moves = m.compute_possible_moves()
+    # shuffle the moves
+    random.shuffle(moves)
+    # move: tuple, move_idx: bottom(0), top(1), left (2), right(3)
+    move, move_idx = moves[0]
+# Exploitation
+else:
+    moves = m.all_actions
+    s = m.state_for_agent(m.mousy)
+    move_idx = np.argmax(q.q[s])
+    move = moves[move_idx]
+```
+
+
+![](./artifacts/explorationExploitation.gif)
