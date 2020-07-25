@@ -25,7 +25,7 @@ while not m.has_won():
 
 
 
-### 02. Q-Learning using Bellam Equation
+### 02. Q-Learning using Bellman Equation
 
 Using Bellman equation to update value function.
 

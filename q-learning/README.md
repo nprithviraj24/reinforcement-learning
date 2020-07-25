@@ -3,7 +3,7 @@
 Aims:
 
 - [x] Basic Q-Learning
-- [ ] Explore OpenAI Gym package
+- [x] Explore OpenAI Gym package
 - [ ] DQN
 
 
